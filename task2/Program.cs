@@ -1,14 +1,35 @@
-﻿void Main()
+﻿// Задача 2: Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+
+
+Console.Write("Введите число M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите число N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+AkkermanFunction(m,n);
+
+
+// вызов функции Аккермана
+void AkkermanFunction(int m, int n)
 {
-    int result = Ackermann (2, 5);
-    Console.WriteLine ("Результат: " + result); //когда n=2 и m=5, результат будет равен 13
- 
-    result = Ackermann (1, 2);
-    Console.WriteLine ("Результат: " + result); //когда n=1 и m=2, результат будет равен 4
+    Console.Write(Akkerman(m, n)); 
 }
- 
- static int Ackermann (int n, int m) => (n < 0 || m < 0) 
-                        ? throw new ArgumentOutOfRangeException() 
-                        : (n == 0) ? (m + 1) 
-                        : (m == 0) ? Ackermann (n - 1, 1)
-                        : Ackermann (n - 1, Ackermann (n, m - 1));
+
+// функция Аккермана
+int Akkerman(int m, int n)
+{
+    if (m == 0)
+    {
+        return n + 1;
+    }
+    else if (n == 0 && m > 0)
+    {
+        return Akkerman(m - 1, 1);
+    }
+    else
+    {
+        return (Akkerman(m - 1, Akkerman(m, n - 1)));
+    }
+}
