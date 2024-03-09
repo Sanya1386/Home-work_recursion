@@ -1,38 +1,44 @@
 ﻿// Задача 1: Задайте значения M и N. Напишите программу, которая выведет все натуральные числа
 // в промежутке от M до N. Использовать рекурсию, не использовать циклы.
-
-Console.Write("Введи N: ");
-int N = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введи M: ");
-int M = Convert.ToInt32(Console.ReadLine());
-
-
-void ShowNaturalNumber(int M, int N)
+void Main()
 {
-    int mindigit;
-    int maxdigit;
-    if (M < N)
+    Console.Write("Введи N: ");
+    int N = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введи M: ");
+    int M = Convert.ToInt32(Console.ReadLine());
+
+
+    void ShowNaturalNumber(int M, int N)
     {
-        mindigit = M;
-        maxdigit = N;
+        int mindigit;
+        int maxdigit;
+        if (M < N)
+        {
+            mindigit = M;
+            maxdigit = N;
+        }
+        else
+        {
+            mindigit = N;
+            maxdigit = M;
+        }
+        if (mindigit != maxdigit)
+        {
+            Console.Write(mindigit + ", ");
+            ShowNaturalNumber(mindigit + 1, maxdigit);
+            //Console.Write(mindigit + ", ");
+        }
+        else
+        {
+            Console.Write(maxdigit);
+        }
     }
-    else
-    {
-        mindigit = N;
-        maxdigit = M;
-    }
-    if(mindigit != maxdigit)
-    {
-        Console.Write(mindigit + ", ");
-        ShowNaturalNumber(mindigit + 1, maxdigit);
-        //Console.Write(mindigit + ", ");
-    }
-    else {
-        Console.Write(maxdigit);
-    }
+
+    ShowNaturalNumber(M, N);
 }
 
-ShowNaturalNumber(M, N);
+Main();
+
 // void Main()
 // {
 // Console.Write("Введи N: ");
